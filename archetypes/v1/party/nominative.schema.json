@@ -1,0 +1,22 @@
+{
+  "$schema":"http://json-schema.org/draft-04/schema#",
+  "definitions":{},
+  "id":"http://api.swindle.net/archetypes/v1/schemas/party/nominative.schema.json",
+  "properties":{
+    "description":{
+      "default":"null",
+      "description":"A spoken or written representation or account of a person, object, or event.",
+      "id":"/properties/description",
+      "title":"Nominative.description schema",
+      "type":"string"
+    },
+    "name":{
+      "default":"",
+      "description":"A word or set of words by which a person, animal, place, or thing is known, addressed, or referred to.",
+      "id":"/properties/name",
+      "title":"Nominative.name schema",
+      "type":"string"
+    }
+  },
+  "type":"object"
+}

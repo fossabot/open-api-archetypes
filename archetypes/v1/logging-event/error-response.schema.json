@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://api.swindle.net/archetypes/v1/schemas/log/error-response.schema.json",
+  "title": "ErrorResponse",
+  "description": "ErrorResponse captures all 4xx class of status codes, for cases in which the client seems to have erred. Except when responding to a HEAD request, the server SHOULD include an entity containing an explanation of the error situation, and whether it is a temporary or permanent condition. These status codes are applicable to any request method. User agents SHOULD display any included entity to the user.",
+  "allOf": [
+    {
+      "$ref": "http://api.swindle.net/archetypes/v1/schemas/log/logging-event.schema.json"
+    },
+    {
+      "properties": {
+        "logger": {
+          "default": "[http-logger]"
+        },
+        "level": {
+          "default": "ERROR"
+        }
+      }
+    }
+  ],
+  "type": "object"
+}

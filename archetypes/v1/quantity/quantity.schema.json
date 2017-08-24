@@ -1,0 +1,20 @@
+{
+  "$schema":"http://json-schema.org/draft-04/schema#",
+  "definitions":{},
+  "id":"http://api.swindle.net/archetypes/v1/schemas/quantity/quantity.schema.json",
+  "title":"Quantity",
+  "description":"A representation of an amount of something measured according to some standard of measurement.",
+  "properties":{
+    "amount":{
+      "default":0,
+      "description":"The amount of something.",
+      "id":"/properties/amount",
+      "title":"Quantity.amount schema",
+      "type":"number"
+    }
+  },
+  "required":[
+    "amount"
+  ],
+  "type":"object"
+}

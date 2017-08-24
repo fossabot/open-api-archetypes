@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {},
+    "id": "http://api.swindle.net/archetypes/v1/schemas/quantity/metric.schema.json",
+    "title": "Metric",
+    "description": "A representation of a standard of measurement.",
+    "properties": {
+        "definition": {
+            "default": "",
+            "description": "The formal definition of the Metric.",
+            "id": "/properties/definition",
+            "title": "Metric.definition schema",
+            "type": "string"
+        },
+        "name": {
+            "default": "",
+            "description": "The name of the metric, e.g., \"meters\".",
+            "id": "/properties/name",
+            "title": "Metric.name schema",
+            "type": "string"
+        },
+        "symbol": {
+            "default": "null",
+            "description": "The standard symbol of the Metric, e.g., \"m\" for meters. If no symbol exists, set symbol's value to null.",
+            "id": "/properties/symbol",
+            "title": "Metric.symbol schema",
+            "type": "string"
+        }
+    },
+    "required": [
+        "symbol",
+        "name"
+    ],
+    "type": "object"
+}

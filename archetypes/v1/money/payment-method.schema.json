@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://api.swindle.net/archetypes/v1/schemas/money/payment/payment-method.schema.json",
+  "type": "object",
+  "properties": {},
+  "title": "PaymentMethod",
+  "description": "Represents the medium by which a Payment may be made."
+}

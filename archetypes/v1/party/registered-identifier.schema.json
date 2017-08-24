@@ -1,0 +1,66 @@
+{
+  "$schema":"http://json-schema.org/draft-04/schema#",
+  "additionalProperties":true,
+  "definitions":{
+
+  },
+  "id":"http://api.swindle.net/archetypes/v1/registered-identifier.schema.json",
+  "properties":{
+    "identifier":{
+      "description":"A sequence of characters that represents a unique Party.",
+      "id":"/properties/identifier",
+      "title":"identifier Schema",
+      "type":"string"
+    },
+    "registrationAuthority":{
+      "description":"The recognized or statutory body that manages the RegisteredIdentifier.",
+      "exclusiveMaximum":false,
+      "exclusiveMinimum":false,
+      "id":"/properties/registrationAuthority",
+      "title":"registrationAuthority Schema",
+      "type":[
+        "string",
+        "integer",
+        "null"
+      ]
+    },
+    "type":{
+      "description":"A string or enumeration that classifies the RegisteredIdentifier, e.g., VATRegistrationNumber.",
+      "exclusiveMaximum":false,
+      "exclusiveMinimum":false,
+      "id":"/properties/type",
+      "title":"type Schema",
+      "type":[
+        "string",
+        "integer",
+        "null"
+      ]
+    },
+    "validFrom":{
+      "description":"The date (and optionally time) on which the RegisteredIdentifier went into effect.",
+      "exclusiveMaximum":false,
+      "exclusiveMinimum":false,
+      "id":"/properties/validFrom",
+      "title":"validFrom Schema",
+      "type":[
+        "integer",
+        "null"
+      ]
+    },
+    "validTo":{
+      "description":"The date (and optionally time) on which the RegisteredIdentifier expired for a Party. If the expiration date is unknown, validTo should be set to null.",
+      "exclusiveMaximum":false,
+      "exclusiveMinimum":false,
+      "id":"/properties/validTo",
+      "title":"validTo Schema",
+      "type":[
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required":[
+    "identifier"
+  ],
+  "type":"object"
+}

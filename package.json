@@ -1,0 +1,107 @@
+{
+  "name": "open-api-archetypes",
+  "description": "The Party archetype represents an identifiable, addressable entity that may have legal status and normally has autonomous control over (at least some of) its actions.",
+  "version": "0.0.0",
+  "author": {
+    "name": "Greg Swindle",
+    "email": "greg@swindle.net",
+    "url": "https://githbub.com/gregswindle"
+  },
+  "dependencies": {
+    "superagent": "3.6.0"
+  },
+  "devDependencies": {
+    "babel-jest": "20.0.3",
+    "babel-preset-env": "1.6.0",
+    "babelify": "7.3.0",
+    "browserify": "14.4.0",
+    "codecov": "2.3.0",
+    "commitplease": "2.7.10",
+    "copyfiles": "1.2.0",
+    "eslint": "4.5.0",
+    "eslint-config-xo-space": "0.16.0",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-jest": "20.0.3",
+    "eslint-plugin-jsdoc": "3.1.2",
+    "eslint-plugin-no-unsafe-innerhtml": "1.0.16",
+    "eslint-plugin-no-unsanitized": "2.0.1",
+    "eslint-plugin-node": "5.1.1",
+    "eslint-plugin-promise": "3.5.0",
+    "eslint-plugin-scanjs-rules": "0.2.1",
+    "eslint-plugin-security": "1.4.0",
+    "eslint-plugin-standard": "3.0.1",
+    "eslint-plugin-xss": "0.1.8",
+    "expect.js": "0.3.1",
+    "glob-promise": "3.1.0",
+    "jest": "20.0.4",
+    "jest-cli": "20.0.4",
+    "jsdoc-to-markdown": "3.0.0",
+    "markdown-decorator": "1.0.0",
+    "markdown-toc": "1.1.0",
+    "mocha": "3.5.0",
+    "nsp": "2.7.0",
+    "openapi2apigee": "0.6.0",
+    "regenerator-runtime": "0.11.0",
+    "sinon": "3.2.1",
+    "standard-version": "4.2.0",
+    "swagger-cli": "^1.0.0-beta.2",
+    "swagger-markdown": "1.1.1",
+    "uglify-js": "3.0.28",
+    "yeoman-assert": "3.0.0",
+    "yeoman-test": "1.7.0"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "jest": true,
+      "node": true
+    }
+  },
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://github.com/gregswindle/open-api-archetypes",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "keywords": [
+    "archetype",
+    "party"
+  ],
+  "license": "Apache-2.0",
+  "main": "lib/index.js",
+  "repository": "https://github.com/gregswindle/open-api-archetypes.git",
+  "scripts": {
+    "apigee:apiproxy:deploy": "npm run apigee:deploy-api && npm run apigee:update:policies && npm run apigee:update:proxies && npm run apigee:update:resources:jsc && npm run apigee:update:resources:openapi && npm run apigee:update:targets && npm run apigee:update:zip && rm -rf .tmp",
+    "apigee:apiproxy:update": "npm run apigee:generate-api && npm run apigee:update:policies && npm run apigee:update:proxies && npm run apigee:update:resources:jsc && npm run apigee:update:resources:openapi && npm run apigee:update:targets && npm run apigee:update:zip && rm -rf .tmp",
+    "apigee:deploy-api": "openapi2apigee generateApi open-api-archetypes -s openapi/*json -D -d .tmp",
+    "apigee:generate-api": "openapi2apigee generateApi open-api-archetypes -s openapi/*json -d .tmp",
+    "apigee:update:policies": "copyfiles .tmp/open-api-archetypes/apiproxy/policies/** apiproxy/policies",
+    "apigee:update:proxies": "copyfiles .tmp/open-api-archetypes/apiproxy/proxies/** apiproxy/proxies",
+    "apigee:update:resources:jsc": "copyfiles .tmp/open-api-archetypes/apiproxy/resources/jsc/** apiproxy/resources/jsc",
+    "apigee:update:resources:openapi": "copyfiles .tmp/open-api-archetypes/apiproxy/resources/openapi/** apiproxy/resources/openapi",
+    "apigee:update:targets": "copyfiles .tmp/open-api-archetypes/apiproxy/targets/** apiproxy/targets",
+    "apigee:update:zip": "copyfiles .tmp/open-api-archetypes/apiproxy/*.zip .",
+    "btp": "npm run build-test-push",
+    "build": "browserify lib/*.js -t babelify --outfile apiproxy/resources/jsc/bundle.js && npm run minify",
+    "build-test-push": "npm run build && npm test && npm run docs && .github/assets/prepend-header.sh --push github",
+    "docs": "npm run docs:swagger:apis && npm run docs:jsc",
+    "docs:eslint-index": "npm run lint:rules --  --docs --format table > docs/ESLINT_RULES.md",
+    "docs:jsc": "npm run docs:jsc:apis && npm run docs:jsc:complexity",
+    "docs:jsc:apis": "jsdoc2md --files lib/*.js > docs/JSCS.md",
+    "docs:jsc:complexity": "cr --format markdown lib/*.js > docs/COMPLEXITY.md",
+    "docs:swagger:apis": "swagger-markdown -i openapi/*.json -o docs/SWAGGER.md",
+    "eslint": "./node_modules/.bin/eslint -c ./.eslintrc.yml -f table generators/**/*.js --fix",
+    "eslint:html": "./node_modules/.bin/eslint -c ./.eslintrc.yml -f html generators/**/*.js --fix > ./eslint-report.html",
+    "lint": "eslint -c .eslintrc.yml generators/** __tests__/** -f table --fix",
+    "lint:rules": "eslint-index .eslintrc.yml",
+    "minify": "uglifyjs apiproxy/resources/jsc/bundle.js  --compress -o apiproxy/resources/jsc/bundle.min.js",
+    "posttest": "npm run security",
+    "prepublish": "nsp check -o summary",
+    "pretest": "npm run lint",
+    "readme:toc": "markdown-toc -i README.md",
+    "security": "nsp check --output summary",
+    "swagger:lint": "swagger validate openapi/*.yml --debug && swagger validate openapi/*.json --debug",
+    "test": "jest --config=jest.config.json"
+  }
+}

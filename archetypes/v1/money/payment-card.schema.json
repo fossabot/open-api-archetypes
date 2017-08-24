@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://api.swindle.net/archetypes/v1/schemas/money/payment/payment-card.schema.json",
+  "title": "PaymentCard",
+  "description": "Represents a physical token such as a plastic card that authorizes the Party identified on it to charge the cost of goods and services to an account.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "http://api.swindle.net/archetypes/v1/schemas/date/effective-dates.schema.json"
+    },
+    {
+      "$ref": "http://api.swindle.net/archetypes/v1/schemas/money/payment/payment-method.schema.json"
+    },
+    {
+      "properties": {
+        "billingAddress": {
+          "default": "",
+          "description": "The address to which account statements are sent.",
+          "id": "/properties/billingAddress",
+          "title": "PaymentCard.billingAddress schema",
+          "type": "string"
+        },
+        "cardAssociationName": {
+          "default": "",
+          "description": "The name of the card association that manages the card networks to which the PaymentCard belongs, e.g., \"MasterCard\", \"Visa\".",
+          "id": "/properties/cardAssociationName",
+          "title": "PaymentCard.cardAssociationName schema",
+          "type": "string"
+        },
+        "cardNumber": {
+          "default": "",
+          "description": "The number on the PaymentCard.",
+          "id": "/properties/cardNumber",
+          "title": "PaymentCard.cardNumber schema",
+          "type": "string"
+        },
+        "cardVerificationCode": {
+          "default": "",
+          "description": "A verification code printed on the back of the PaymentCard. At present, this is a three-digit number.",
+          "id": "/properties/cardVerificationCode",
+          "minLength": 3,
+          "title": "PaymentMethod.cardVerificationCode schema",
+          "type": "string"
+        },
+        "issueNumber": {
+          "default": "",
+          "description": "A number used by the issuing authority to uniquely identify the issue of the PaymentCard.",
+          "id": "/properties/issueNumber",
+          "title": "PaymentCard.issueNumber schema",
+          "type": "string"
+        },
+        "nameOnCard": {
+          "default": "",
+          "description": "The name of the Party authorized to use the PaymentCard.",
+          "id": "/properties/nameOnCard",
+          "title": "PaymentCard.nameOnCard schema",
+          "type": "string"
+        }
+      },
+      "required": [
+        "billingAddress",
+        "cardAssociationName",
+        "cardNumber",
+        "nameOnCard",
+        "validTo"
+      ]
+    }
+  ]
+}

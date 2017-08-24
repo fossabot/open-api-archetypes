@@ -1,17 +1,16 @@
 swagger: '2.0'
 info:
   description: >-
+
+    ## `Party`
+
     The `Party` archetype represents an identifiable, addressable entity that
     may have a legal status and that normally has autonomous control over (at
     least some of) its actions.
-
-
-
-    ---
   version: 1.0.0
   title: Party
   termsOfService: >-
-    https://github.com/gregswindle/open-api-archetypes/blob/master/TERMS_OF_SERVICE.md
+    https://github.com/gregswindle/archetype-party/blob/master/TERMS_OF_SERVICE.md
   contact:
     email: greg@swindle.net
   license:
@@ -22,6 +21,14 @@ basePath: /archetypes/v1/parties
 tags:
   - name: parties
     description: 'A list of archetypes that represent identifiable, addressable entities.'
+  - name: people
+    description: A list of human beings.
+  - name: preferences
+    description: >-
+      Choices of (or liking for) something, often from a set of possible or
+      offered options.
+  - name: organizations
+    description: Administrative and functional structures.
 schemes:
   - http
   - https
@@ -51,27 +58,165 @@ paths:
           description: Bad Request.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
         '401':
-          description: 'Unauthorized. '
+          description: Unauthorized.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
         '403':
           description: Forbidden.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
         '404':
           description: Not Found.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
         '405':
           description: 'Method Not Allowed. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
+  '/people/{uuid}':
+    get:
+      tags:
+        - people
+      summary: Retrieve a specific Person entity.
+      description: Retrieve a Person by their universally unique identifier (UUID).
+      produces:
+        - application/json
+        - application/xml
+      operationId: getPersonByUuid
+      parameters:
+        - in: path
+          name: uuid
+          description: The univerally unique identifier associated with a Person.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Person'
+        '400':
+          description: Bad Request.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
+        '401':
+          description: Unauthorized.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
+        '403':
+          description: Forbidden.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
+        '404':
+          description: Not Found.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
+        '405':
+          description: 'Method Not Allowed. '
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
+  '/preferences/{uuid}':
+    get:
+      tags:
+        - preferences
+      summary: Retrieve a specific Preference.
+      description: Retrieve a Preference by its universally unique identifier (UUID).
+      produces:
+        - application/json
+        - application/xml
+      operationId: getPreferenceByUuid
+      parameters:
+        - in: path
+          name: uuid
+          description: The univerally unique identifier associated with a Person.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Preference'
+        '400':
+          description: Bad Request.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
+        '401':
+          description: Unauthorized.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
+        '403':
+          description: Forbidden.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
+        '404':
+          description: Not Found.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
+        '405':
+          description: 'Method Not Allowed. '
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
+  '/organizations/{uuid}':
+    get:
+      tags:
+        - organizations
+      summary: Retrieve a specific Organization.
+      description: Retrieve a Organization by its universally unique identifier (UUID).
+      produces:
+        - application/json
+        - application/xml
+      operationId: getOrganizationByUuid
+      parameters:
+        - in: path
+          name: uuid
+          description: The univerally unique identifier associated with an Organization.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Organization'
+        '400':
+          description: Bad Request.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
+        '401':
+          description: Unauthorized.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
+        '403':
+          description: Forbidden.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
+        '404':
+          description: Not Found.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
+        '405':
+          description: 'Method Not Allowed. '
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
 definitions:
   Locale:
     $ref: 'http://api.swindle.net/archetypes/v1/schemas/locale/locale.schema.json'
@@ -79,45 +224,47 @@ definitions:
     $ref: >-
       http://api.swindle.net/archetypes/v1/schemas/locale/iso-country-code.schema.json
   Address:
-    discriminator: type
-    type: object
-    description: Represents information that can be used to contact a Party.
-    required:
-      - type
-      - value
-    properties:
-      type:
-        default: 'null'
-        description: 'A string indicating what type of field this is, e.g., "work".'
-        type: string
-        enum:
-          - EMAIL_ADDRESS
-          - GEOGRAPHIC_ADDRESS
-          - TELECOM_ADDRESS
-          - URL_ADDRESS
-      validFrom:
-        default: 'null'
-        description: The date on which the RegisteredIdentifier went into effect.
-        format: date
-        type: string
-      validTo:
-        default: 'null'
-        description: The date on which the RegisteredIdentifier expired.
-        format: date
-        type: string
-      value:
-        default: 'null'
-        description: The full address formatted for display.
-        type: string
+    allOf:
+      - properties:
+          addressType:
+            default: 'null'
+            description: The Address sub-type.
+            type: string
+            enum:
+              - EMAIL_ADDRESS
+              - GEOGRAPHIC_ADDRESS
+              - TELECOM_ADDRESS
+              - URL_ADDRESS
+          type:
+            default: 'null'
+            description: 'A string indicating what type of field this is, e.g., "work".'
+            type: string
+          value:
+            default: 'null'
+            description: The full address formatted for display.
+            type: string
+      - $ref: >-
+          http://api.swindle.net/archetypes/v1/schemas/date/effective-dates.schema.json
+      - required:
+          - addressType
+          - value
+      - title: Address
   EmailAddress:
     allOf:
       - $ref: '#/definitions/Address'
       - title: EmailAddress
+      - properties:
+          addressType:
+            enum:
+              - EMAIL_ADDRESS
   GeographicAddress:
     allOf:
       - $ref: '#/definitions/Address'
       - description: Represents a geographic location at which a Party may be contacted.
       - properties:
+          addressType:
+            enum:
+              - GEOGRAPHIC_ADDRESS
           addressLines:
             description: >-
               One or more lines that physically identify a location. The first
@@ -155,6 +302,9 @@ definitions:
           Represents a number that can contact a telephone, mobile phone, fax,
           pager, or other telephonic device.
       - properties:
+          addressType:
+            enum:
+              - TELECOM_ADDRESS
           areaCode:
             description: The code for an area or city.
             type: string
@@ -188,37 +338,48 @@ definitions:
   UrlAddress:
     allOf:
       - $ref: '#/definitions/Address'
+      - properties:
+          addressType:
+            enum:
+              - URL_ADDRESS
       - description: >-
           The unqiue address of a resource, e.g., Web page, on a computer
           network.
       - title: UrlAddress
   PreferenceOption:
-    description: Specifies the name of a possible option and its description.
-    type: object
-    properties:
-      description:
-        description: A succinct summary of the PreferenceOption.
-        type: string
-      name:
-        description: The PreferenceOption's name.
-        type: string
+    allOf:
+      - $ref: >-
+          http://api.swindle.net/archetypes/v1/schemas/party/nominative.schema.json
+      - required:
+          - name
+      - properties:
+          name:
+            description: Specifies the name of a possible option and its description.
+          description:
+            description: >-
+              A statement that explains the characteristics of the
+              `PreferenceOption`.
   PreferenceType:
-    description: >-
-      Specifies the name, a description, and a range of PreferenceOptions for a
-      Preference.
-    type: object
-    properties:
-      description:
-        description: A succinct summary of the PreferenceType.
-        type: string
-      name:
-        description: The classification name of the Perference range.
-        type: string
-      options:
-        description: A collection of one or more PreferenceOptions.
-        type: array
-        items:
-          $ref: '#/definitions/PreferenceOption'
+    allOf:
+      - $ref: >-
+          http://api.swindle.net/archetypes/v1/schemas/party/nominative.schema.json
+      - description: >-
+          Specifies the name, a description, and a range of PreferenceOptions
+          for a Preference.
+      - properties:
+          description:
+            description: >-
+              Specifies the name, a description, and a range of
+              `PreferenceOptions` for a `Preference`.
+            type: string
+          name:
+            description: The classification name of the Perference range.
+            type: string
+          options:
+            description: A collection of one or more PreferenceOptions.
+            type: array
+            items:
+              $ref: '#/definitions/PreferenceOption'
   Preference:
     description: >-
       Represents a Party's expressed choice of (or liking for) something, often
@@ -232,54 +393,35 @@ definitions:
       type:
         $ref: '#/definitions/PreferenceType'
   RegisteredIdentifier:
+    allOf:
+      - properties:
+          identifier:
+            type: string
+            description: >-
+              A string that signifies a Party. The identifier's value is unique
+              in the context of time and the registrationAuthority that assigned
+              it.
+          registrationAuthority:
+            description: >-
+              Represents the recognized or statutory body responsible for
+              assigning the RegisteredIdentifier and associating it with a
+              Party.
+            type: string
+          type:
+            description: A value that classifies the RegisteredIdentifier
+            type: string
+            enum:
+              - VZID
+              - ENTERPRISE_ID
+              - EMPLID
+              - SSN
+              - ONE_WORLD
+      - $ref: >-
+          http://api.swindle.net/archetypes/v1/schemas/date/effective-dates.schema.json
     type: object
     description: >-
       The RegisteredIdentifier represents an identifier for a Party that has
       been assigned by a recognized or statutory body.
-    properties:
-      identifier:
-        type: string
-        description: >-
-          A string that signifies a Party. The identifier's value is unique in
-          the context of time and the registrationAuthority that assigned it.
-      registrationAuthority:
-        description: >-
-          Represents the recognized or statutory body responsible for assigning
-          the RegisteredIdentifier and associating it with a Party.
-        type: string
-      type:
-        description: A value that classifies the RegisteredIdentifier
-        type: string
-        enum:
-          - VZID
-          - ENTERPRISE_ID
-          - EMPLID
-          - SSN
-          - ONE_WORLD
-      validFrom:
-        description: The date on which the RegisteredIdentifier went into effect.
-        type: string
-        format: date
-        default: 'null'
-      validTo:
-        description: The date on which the RegisteredIdentifier expired.
-        type: string
-        format: date
-        default: 'null'
-  PartyRole:
-    type: object
-    description: >-
-      Captures the semantics of the role played by a Party in a particular
-      PartyRelationship.
-    properties:
-      description:
-        description: A summary of the PartyRole.
-        type: string
-      name:
-        description: The name of the PartyRole.
-        type: string
-      party:
-        $ref: '#/definitions/Party'
   Party:
     type: object
     description: >-
@@ -314,12 +456,6 @@ definitions:
         description: >-
           An identifier for a Party that has been assigend by a recognized or
           statutory body.
-      roles:
-        type: array
-        items:
-          $ref: '#/definitions/PartyRole'
-        default: '[]'
-        description: An array of the Party's roles.
   AddressProperties:
     description: Specifies information about an address assigned to a specific Party.
     type: object
@@ -335,24 +471,21 @@ definitions:
           type: string
           example: []
   Ethnicity:
-    description: >-
-      Represents a classification of one or more People according to common
-      racial, national, tribal, religious, linguistic, or cultural origin or
-      background. Each Person may have zero or more Ethnicities.
+    allOf:
+      - $ref: >-
+          http://api.swindle.net/archetypes/v1/schemas/party/nominative.schema.json
+      - required:
+          - name
+      - description: >-
+          Represents a classification of one or more People according to common
+          racial, national, tribal, religious, linguistic, or cultural origin or
+          background. Each Person may have zero or more Ethnicities.
 
-      Ethnicities can be used to categorize Preferences by cohorts (and not by
-      individual). E.g., Jains are strict vegetarians; Muslims eat meat prepared
-      as prescribed by Muslim law.
-    type: object
-    properties:
-      name:
-        description: The name of the Ethnicity.
-        type: string
-      description:
-        description: Optionally provides additional information about the Ethnicity.
-        type: string
-    required:
-      - name
+          Ethnicities can be used to categorize Preferences by cohorts (and not
+          by individual). E.g., Jains are strict vegetarians; Muslims eat meat
+          prepared as prescribed by Muslim law.
+      - required:
+          - name
   IsoSex:
     description: >-
       ISO/IEC 5218:2004 specifies a uniform representation of human sexes for
@@ -522,26 +655,117 @@ definitions:
       Provides a way to store information about the human body such as size,
       weight, hair color, measurements, and so on.
     type: object
+  PersonName:
+    allOf:
+      - $ref: >-
+          http://api.swindle.net/archetypes/v1/schemas/date/effective-dates.schema.json
+      - description: Represents a name for a `Person`.
+      - properties:
+          prefix:
+            description: 'An honorific such as Ms., Dr., etc.'
+            type: array
+            items:
+              type: string
+              example: []
+          givenName:
+            description: The first name in Western countries.
+            type: array
+            items:
+              type: string
+              example: []
+          middleName:
+            description: Any name other than the given name(s) and the family name(s).
+            type: array
+            items:
+              type: string
+              example: []
+          familyName:
+            description: >-
+              The last name in Western countries. This is the only manditory
+              component of `PersonName` and the only one used if a `Person` has
+              only one name.
+          preferredName:
+            description: A name (or names) that the person is commonly known by.
+            type: array
+            items:
+              type: string
+              example: 'null'
+          suffix:
+            description: >-
+              Potentially a generational label (e.g., Jr., III); a
+              qualification, (e.g., Ph.D.).
+            type: array
+            items:
+              type: string
+              example: 'null'
+          uses:
+            description: >-
+              A short description of what the name is used for (e.g., a stage
+              name or a legal name).
+            type: array
+            items:
+              type: string
+              example: 'null'
   Person:
     allOf:
       - $ref: '#/definitions/Party'
       - description: Represents information about a human being.
       - properties:
-          bodyMetrics:
-            $ref: '#/definitions/BodyMetrics'
           dateOfBirth:
             description: The Person's date of birth.
             type: string
             format: date
+          ethnicity:
+            type: array
+            items:
+              $ref: '#/definitions/Ethnicity'
           gender:
             $ref: '#/definitions/Gender'
           isoSex:
             $ref: '#/definitions/IsoSex'
+          bodyMetrics:
+            type: array
+            items:
+              $ref: '#/definitions/BodyMetrics'
+          personName:
+            $ref: '#/definitions/PersonName'
+          otherPersonNames:
+            type: array
+            items:
+              $ref: '#/definitions/PersonName'
+      - required:
+          - personName
+          - gender
+          - isoSex
       - title: Person
+  OrganizationName:
+    allOf:
+      - $ref: >-
+          http://api.swindle.net/archetypes/v1/schemas/date/effective-dates.schema.json
+      - properties:
+          name:
+            description: The name of the `Organization`.
+            type: string
+          use:
+            description: >-
+              The way in which the `OrganizationName` is normally or correctly
+              used.
+  Organization:
+    allOf:
+      - $ref: '#/definitions/Party'
+      - properties:
+          organizationName:
+            $ref: '#/definitions/OrganizationName'
+          otherOrganizationNames:
+            type: array
+            items:
+              $ref: '#/definitions/OrganizationName'
+      - $ref: >-
+          http://api.swindle.net/archetypes/v1/schemas/date/effective-dates.schema.json
   ErrorResponse:
     allOf:
       - $ref: >-
-          http://api.swindle.net/archetypes/v1/schemas/log/error-response.schema.json
+          http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response.schema.json
       - description: >-
           ErrorResponse captures all 4xx class of status codes, for cases in
           which the client seems to have erred. Except when responding to a HEAD

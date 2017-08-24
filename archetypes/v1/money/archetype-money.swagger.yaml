@@ -3,7 +3,6 @@ info:
   description: >-
     ## `Money`
 
-
     The `Money` archetype represents an amount of a specific `Currency`.
 
     ## `Currency`
@@ -16,9 +15,11 @@ info:
     At present, there are two fundamentally different types of currency -- those
     that are specified by ISO and those that are not.
 
-    1. **`IsoCurrency`** represents a type of `Currency` whose `name`,
-    `alphabeticCode`, and `numericCode` are are defined in  [ISO
-    4217](https://www.iso.org/iso-4217-currency-codes.html).
+    1. **`IsoCurrency`** represents a type of `Currency` with [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) definitions for
+
+        - `name`,
+        - `alphabeticCode`, and
+        - `numericCode`.
 
     2. **`NonIsoCurrency`** represents a type of `Currency` that is _not_
     defined in any ISO specification. These types of currency might unrecognized
@@ -26,16 +27,18 @@ info:
 
     ## `Payment` and `PaymentMethod`
 
+    The `Payment` archetype represents `Money` paid by one `Party` to another in return for goods or services. A `PaymentMethod` is a medium by which `Money` is transferred.
+
 
     ### `PaymentCard`
+
+
 
 
     ### `CreditCard`
 
 
-
     ### `DebitCard`
-
 
 
     ### `GiftCard`
@@ -43,16 +46,22 @@ info:
 
     ### `Donation`
 
+
+    ### `Cash` and `DigitalCurrency`
+
+
+
+    ### `Check`
+
+
+
     ## Compliance with existing standards
 
-    * [OMG Currency Specification v1.0]('http://www.omg.org/spec/CURR/1.0/PDF'):
-    A standard to support international currency.
-     
-    * [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html): Three- and
-    two-letter currency codes, currency numbers, and currency names.
+    * [OMG Currency Specification v1.0]('http://www.omg.org/spec/CURR/1.0/PDF'): A standard to support international currency.
 
-    * [ISO 3166](https://www.iso.org/iso-3166-country-codes.html): Two-letter
-    country codes and country names.
+    * [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html): Three- and two-letter currency codes, currency numbers, and currency names.
+
+    * [ISO 3166](https://www.iso.org/iso-3166-country-codes.html): Two-letter country codes and country names.
 
 
     ---
@@ -115,27 +124,27 @@ paths:
           description: Bad Request.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
         '401':
-          description: 'Unauthorized. '
+          description: 'Unauthorized.'
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
         '403':
           description: Forbidden.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
         '404':
           description: Not Found.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
         '405':
           description: 'Method Not Allowed. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
   '/currencies/{alphabetic-code}':
     get:
       tags:
@@ -162,27 +171,27 @@ paths:
           description: Bad Request.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
         '401':
           description: 'Unauthorized. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
         '403':
           description: Forbidden.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
         '404':
           description: Not Found.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
         '405':
           description: 'Method Not Allowed. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
   /payments:
     get:
       tags:
@@ -215,27 +224,27 @@ paths:
           description: Bad Request.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
         '401':
           description: 'Unauthorized. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
         '403':
           description: Forbidden.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
         '404':
           description: Not Found.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
         '405':
           description: 'Method Not Allowed. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
   /payment-methods:
     get:
       tags:
@@ -258,42 +267,32 @@ paths:
           description: Bad Request.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
         '401':
           description: 'Unauthorized. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
         '403':
           description: Forbidden.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
         '404':
           description: Not Found.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
         '405':
           description: 'Method Not Allowed. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
 definitions:
   Currency:
     allOf:
-      - $ref: >-
-          http://api.swindle.net/archetypes/v1/schemas/quantity/metric.schema.json
-      - $ref: >-
-          http://api.swindle.net/archetypes/v1/schemas/money/currency.schema.json
-      - $ref: >-
-          http://api.swindle.net/archetypes/v1/schemas/date/effective-dates.schema.json
+      - $ref: 'http://api.swindle.net/archetypes/v1/schemas/money/currency.schema.json'
       - properties:
-          acceptedIn:
-            type: array
-            items:
-              $ref: >-
-                http://api.swindle.net/archetypes/v1/schemas/locale/iso-country-code.schema.json
           name:
             description: 'The name of the `Currency`, e.g., "Pound Sterling".'
           definition:
@@ -337,7 +336,7 @@ definitions:
   ErrorResponse:
     allOf:
       - $ref: >-
-          http://api.swindle.net/archetypes/v1/schemas/log/error-response.schema.json
+          http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response.schema.json
       - description: >-
           ErrorResponse captures all 4xx class of status codes, for cases in
           which the client seems to have erred. Except when responding to a HEAD

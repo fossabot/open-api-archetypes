@@ -168,7 +168,7 @@ paths:
             modifications.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/logging-event.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/logging-event.schema.json
         '401':
           description: >-
             Unauthorized.
@@ -263,7 +263,7 @@ paths:
             modifications.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/logging-event.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/logging-event.schema.json
         '401':
           description: >-
             Unauthorized.
@@ -366,7 +366,7 @@ paths:
             modifications.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/logging-event.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/logging-event.schema.json
         '401':
           description: >-
             Unauthorized.
@@ -442,4 +442,4 @@ definitions:
     $ref: >-
       http://api.swindle.net/archetypes/v1/schemas/locale/iso-country-code.schema.json
   ErrorResponse:
-    $ref: 'http://api.swindle.net/archetypes/v1/schemas/log/logging-event.schema.json'
+    $ref: 'http://api.swindle.net/archetypes/v1/schemas/logging-event/logging-event.schema.json'

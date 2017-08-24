@@ -51,27 +51,27 @@ paths:
           description: Bad Request.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
         '401':
           description: 'Unauthorized. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
         '403':
           description: Forbidden.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
         '404':
           description: Not Found.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
         '405':
           description: 'Method Not Allowed. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
   '/systems-of-units/{name-of-system}':
     get:
       tags:
@@ -100,27 +100,27 @@ paths:
           description: Bad Request.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
         '401':
           description: 'Unauthorized. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
         '403':
           description: Forbidden.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
         '404':
           description: Not Found.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
         '405':
           description: 'Method Not Allowed. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
   '/systems-of-units/si/base-units/{name}':
     get:
       tags:
@@ -154,27 +154,27 @@ paths:
           description: Bad Request.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
         '401':
           description: 'Unauthorized. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
         '403':
           description: Forbidden.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
         '404':
           description: Not Found.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
         '405':
           description: 'Method Not Allowed. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
   '/systems-of-units/labor/{name}':
     get:
       tags:
@@ -200,27 +200,27 @@ paths:
           description: Bad Request.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
         '401':
           description: 'Unauthorized. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
         '403':
           description: Forbidden.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
         '404':
           description: Not Found.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
         '405':
           description: 'Method Not Allowed. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
 definitions:
   SystemOfUnits:
     $ref: >-
@@ -485,7 +485,7 @@ definitions:
   ErrorResponse:
     allOf:
       - $ref: >-
-          http://api.swindle.net/archetypes/v1/schemas/log/error-response.schema.json
+          http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response.schema.json
       - description: >-
           ErrorResponse captures all 4xx class of status codes, for cases in
           which the client seems to have erred. Except when responding to a HEAD

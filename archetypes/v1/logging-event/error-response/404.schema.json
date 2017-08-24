@@ -1,12 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {},
-  "id": "http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json",
+  "id": "http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json",
   "title": "404 Not Found",
   "description": "The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address. This status code is commonly used when the server does not wish to reveal exactly why the request has been refused, or when no other response is applicable.",
   "allOf": [
     {
-      "$ref": "http://api.swindle.net/archetypes/v1/schemas/log/error-response.schema.json"
+      "$ref": "http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response.schema.json"
     }
   ],
   "type": "object"

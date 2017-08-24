@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "definitions": {},
-    "id": "http://api.swindle.net/archetypes/v1/schemas/log/logging-event.schema.json",
+    "id": "http://api.swindle.net/archetypes/v1/schemas/logging-event/logging-event.schema.json",
     "properties": {
         "level": {
             "default": "ERROR",

@@ -320,9 +320,9 @@ After reviewing the guidelines for [contributing to `open-api-archetypes`][contr
 [mda-book-url]: https://www.amazon.com/Enterprise-Patterns-MDA-Building-Archetype/dp/032111230X
 [npm-image]: https://badge.fury.io/js/open-api-archetypes.svg
 [npm-url]: https://npmjs.org/package/open-api-archetypes
-[nsp-img]: https://nodesecurity.io/orgs/gregswindle/projects/321f4365-67f4-41db-9b16-1c8712fcfd94/badge
+[nsp-img]: https://nodesecurity.io/orgs/gregswindle/projects/76114431-dc7e-455f-bdd0-54c02ec03ffe/badge
 [nsp-sign-up-url]: https://nodesecurity.io/signup
-[nsp-url]: https://nodesecurity.io/orgs//projects/REPLACE-THIS-WITH-YOUR-NSP-UUID
+[nsp-url]: https://nodesecurity.io/orgs/gregswindle/projects/76114431-dc7e-455f-bdd0-54c02ec03ffe
 [one-sonar-url]: http://onesonar.verizon.com/
 [pr-url]: /gregswindle/open-api-archetypes/pulls
 [readme-score-img]: http://readme-score-api.herokuapp.com/score.svg?url=https://github.com/gregswindle/open-api-archetypes

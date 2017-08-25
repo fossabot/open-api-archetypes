@@ -1,0 +1,18 @@
+{
+  "$schema":"http://json-schema.org/draft-04/schema#",
+  "definitions":{},
+  "id":"http://api.swindle.net/archetypes/v1/schemas/party/unique-identifier.schema.json",
+  "properties":{
+    "identifier":{
+      "default":"",
+      "description":"Represents an identifier that is unique within a given context. If possible, use RFC 4122 Universally Unique IDentifier (UUID) version 4 (random) or version 5 (SHA1).",
+      "id":"/properties/identifier",
+      "title":"UniqueIdentifier.identifier schema",
+      "type":"string"
+    }
+  },
+  "required":[
+    "identifier"
+  ],
+  "type":"object"
+}

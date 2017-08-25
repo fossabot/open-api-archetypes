@@ -7,6 +7,88 @@ info:
     The `Party` archetype represents an identifiable, addressable entity that
     may have a legal status and that normally has autonomous control over (at
     least some of) its actions.
+
+    ### `PartyIdentifier`
+
+
+    ### `RegisteredIdentifier`
+
+
+    ### `Address`
+
+
+    #### `GeographicAddress`
+
+
+    #### `TelcomAddress`
+
+
+    #### `EmailAddress`
+
+
+    #### `UrlAddress`
+
+
+    ## `Person`
+
+
+    ### `IsoSex`
+
+
+    ### `Gender`
+
+
+    ### `Ethnicity`
+
+
+    ### `BodyMetrics`
+
+
+    ### `PersonName`
+
+
+    ## `Preference`
+
+
+    ### `PreferenceType`
+
+    ### `PreferenceOption`
+
+     ## `Organization`
+     
+     
+     ### `OrganizationName`
+     
+     
+     ### `OrganizationUnit`
+     
+     ### `Company`
+     
+     
+     ### `CompanyGroup`
+     
+     
+     #### `CompanyName`
+     
+     
+     ### `Partnership`
+     
+     
+     ### `SoleProprietor`
+     
+     
+     ## Compliance with standards
+
+    | Standard | Contents |
+     -------- | -------- 
+     [OMG Party Management Facility Specification](http://www.omg.org/spec/PARTY/1.0/PDF) | A standard that supports party management 
+     [ISO 3166](https://www.iso.org/iso-3166-country-codes.html) | Two- and three-letter country codes and country names 
+     [ISO 5218](https://www.iso.org/standard/36266.html) | A representation of human sexes 
+     [ISO 7250-3:2015](https://www.iso.org/standard/64237.html) | Basic human body measurements for technological design.
+     [ITU-T Recommendations](http://www.itu.int/rec/T-REC-E.164/en) | Telecommunication numbering plan 
+
+
+    ---
   version: 1.0.0
   title: Party
   termsOfService: >-
@@ -20,7 +102,7 @@ host: api.swindle.net
 basePath: /archetypes/v1/parties
 tags:
   - name: parties
-    description: 'A list of archetypes that represent identifiable, addressable entities.'
+    description: 'A list of identifiable, addressable entities.'
   - name: people
     description: A list of human beings.
   - name: preferences
@@ -33,20 +115,62 @@ schemes:
   - http
   - https
 paths:
-  '/{uuid}':
+  /:
+    get:
+      tags:
+        - parties
+      summary: Retrieve all Parties.
+      description: Retrieve all Parties.
+      produces:
+        - application/json
+        - application/xml
+      operationId: getParties
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Party'
+        '400':
+          description: Bad Request.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
+        '401':
+          description: Unauthorized.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
+        '403':
+          description: Forbidden.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
+        '404':
+          description: Not Found.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
+        '405':
+          description: 'Method Not Allowed. '
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+  '/{party-identifier}':
     get:
       tags:
         - parties
       summary: Retrieve a specific Party entity.
-      description: Retrieve a Party by its universally unique identifier (UUID).
+      description: Retrieve a Party by its unique identifier.
       produces:
         - application/json
         - application/xml
-      operationId: getPartyByUuid
+      operationId: getPartyByPartyIdentifier
       parameters:
         - in: path
-          name: uuid
-          description: The univerally unique identifier associated with a Party.
+          name: party-identifier
+          description: The unique identifier of the Party.
           required: true
           type: string
       responses:
@@ -58,41 +182,83 @@ paths:
           description: Bad Request.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
         '401':
           description: Unauthorized.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
         '403':
           description: Forbidden.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
         '404':
           description: Not Found.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
         '405':
           description: 'Method Not Allowed. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
-  '/people/{uuid}':
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+  /people/:
+    get:
+      tags:
+        - people
+      summary: Retrieve all People.
+      description: Retrieve all People.
+      produces:
+        - application/json
+        - application/xml
+      operationId: getPeople
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Person'
+        '400':
+          description: Bad Request.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
+        '401':
+          description: Unauthorized.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
+        '403':
+          description: Forbidden.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
+        '404':
+          description: Not Found.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
+        '405':
+          description: 'Method Not Allowed. '
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+  '/people/{party-identifier}':
     get:
       tags:
         - people
       summary: Retrieve a specific Person entity.
-      description: Retrieve a Person by their universally unique identifier (UUID).
+      description: Retrieve a Person by their unique identifier.
       produces:
         - application/json
         - application/xml
-      operationId: getPersonByUuid
+      operationId: getPersonByPartyIdentifier
       parameters:
         - in: path
-          name: uuid
-          description: The univerally unique identifier associated with a Person.
+          name: party-identifier
+          description: The unique identifier associated with a Person.
           required: true
           type: string
       responses:
@@ -104,41 +270,83 @@ paths:
           description: Bad Request.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
         '401':
           description: Unauthorized.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
         '403':
           description: Forbidden.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
         '404':
           description: Not Found.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
         '405':
           description: 'Method Not Allowed. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
-  '/preferences/{uuid}':
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+  /preferences/:
+    get:
+      tags:
+        - preferences
+      summary: Retrieve all Preferences.
+      description: Retrieve all Preferences.
+      produces:
+        - application/json
+        - application/xml
+      operationId: getPreferences
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Preference'
+        '400':
+          description: Bad Request.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
+        '401':
+          description: Unauthorized.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
+        '403':
+          description: Forbidden.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
+        '404':
+          description: Not Found.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
+        '405':
+          description: 'Method Not Allowed. '
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+  '/preferences/{unique-identifier}':
     get:
       tags:
         - preferences
       summary: Retrieve a specific Preference.
-      description: Retrieve a Preference by its universally unique identifier (UUID).
+      description: Retrieve a Preference by its unique identifier.
       produces:
         - application/json
         - application/xml
-      operationId: getPreferenceByUuid
+      operationId: getPreferenceByUniqueIdentifier
       parameters:
         - in: path
-          name: uuid
-          description: The univerally unique identifier associated with a Person.
+          name: unique-identifier
+          description: The unique identifier associated with a Preference.
           required: true
           type: string
       responses:
@@ -150,41 +358,83 @@ paths:
           description: Bad Request.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
         '401':
           description: Unauthorized.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
         '403':
           description: Forbidden.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
         '404':
           description: Not Found.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
         '405':
           description: 'Method Not Allowed. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
-  '/organizations/{uuid}':
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+  /organizations/:
+    get:
+      tags:
+        - organizations
+      summary: Retrieve all Organizations.
+      description: Retrieve all Organizations.
+      produces:
+        - application/json
+        - application/xml
+      operationId: getOrganizations
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Organization'
+        '400':
+          description: Bad Request.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
+        '401':
+          description: Unauthorized.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
+        '403':
+          description: Forbidden.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
+        '404':
+          description: Not Found.
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
+        '405':
+          description: 'Method Not Allowed. '
+          schema:
+            $ref: >-
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
+  '/organizations/{party-identifier}':
     get:
       tags:
         - organizations
       summary: Retrieve a specific Organization.
-      description: Retrieve a Organization by its universally unique identifier (UUID).
+      description: Retrieve a Organization by its unique identifier.
       produces:
         - application/json
         - application/xml
-      operationId: getOrganizationByUuid
+      operationId: getOrganizationByPartyIdentifier
       parameters:
         - in: path
-          name: uuid
-          description: The univerally unique identifier associated with an Organization.
+          name: party-identifier
+          description: The unique identifier associated with an Organization.
           required: true
           type: string
       responses:
@@ -196,30 +446,36 @@ paths:
           description: Bad Request.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/400.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/400.schema.json
         '401':
           description: Unauthorized.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/401.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/401.schema.json
         '403':
           description: Forbidden.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/403.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/403.schema.json
         '404':
           description: Not Found.
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/404.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/404.schema.json
         '405':
           description: 'Method Not Allowed. '
           schema:
             $ref: >-
-              http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response/405.schema.json
+              http://api.swindle.net/archetypes/v1/schemas/log/error-response/405.schema.json
 definitions:
-  Locale:
-    $ref: 'http://api.swindle.net/archetypes/v1/schemas/locale/locale.schema.json'
+  EffectiveDates:
+    $ref: >-
+      http://api.swindle.net/archetypes/v1/schemas/date/effective-dates.schema.json
+  UniqueIdentifier:
+    allOf:
+      - title: UniqueIdentifier
+      - $ref: >-
+          http://api.swindle.net/archetypes/v1/schemas/party/unique-identifier.schema.json
   IsoCountryCode:
     $ref: >-
       http://api.swindle.net/archetypes/v1/schemas/locale/iso-country-code.schema.json
@@ -243,8 +499,7 @@ definitions:
             default: 'null'
             description: The full address formatted for display.
             type: string
-      - $ref: >-
-          http://api.swindle.net/archetypes/v1/schemas/date/effective-dates.schema.json
+      - $ref: '#/definitions/EffectiveDates'
       - required:
           - addressType
           - value
@@ -394,6 +649,7 @@ definitions:
         $ref: '#/definitions/PreferenceType'
   RegisteredIdentifier:
     allOf:
+      - title: RegisteredIdentifier
       - properties:
           identifier:
             type: string
@@ -416,12 +672,15 @@ definitions:
               - EMPLID
               - SSN
               - ONE_WORLD
-      - $ref: >-
-          http://api.swindle.net/archetypes/v1/schemas/date/effective-dates.schema.json
+      - $ref: '#/definitions/EffectiveDates'
     type: object
     description: >-
       The RegisteredIdentifier represents an identifier for a Party that has
       been assigned by a recognized or statutory body.
+  PartyIdentifier:
+    allOf:
+      - title: PartyIdentifier
+      - $ref: '#/definitions/UniqueIdentifier'
   Party:
     type: object
     description: >-
@@ -429,9 +688,9 @@ definitions:
       status and that normally has autonomous control over (at least some of)
       its actions.
     properties:
-      uuid:
+      partyIdentifier:
         type: string
-        description: A globally unique identifier.
+        description: An identifier for the Party that is unique within a given context..
       addresses:
         type: array
         items:
@@ -653,12 +912,13 @@ definitions:
   BodyMetrics:
     description: >-
       Provides a way to store information about the human body such as size,
-      weight, hair color, measurements, and so on.
+      weight, hair color, measurements, and so on. The [ISO
+      7250-3:2015](https://www.iso.org/standard/64237.html) maintains basic
+      human body measurements for technological design.
     type: object
   PersonName:
     allOf:
-      - $ref: >-
-          http://api.swindle.net/archetypes/v1/schemas/date/effective-dates.schema.json
+      - $ref: '#/definitions/EffectiveDates'
       - description: Represents a name for a `Person`.
       - properties:
           prefix:
@@ -740,8 +1000,7 @@ definitions:
       - title: Person
   OrganizationName:
     allOf:
-      - $ref: >-
-          http://api.swindle.net/archetypes/v1/schemas/date/effective-dates.schema.json
+      - title: OrganizationName
       - properties:
           name:
             description: The name of the `Organization`.
@@ -750,6 +1009,8 @@ definitions:
             description: >-
               The way in which the `OrganizationName` is normally or correctly
               used.
+            type: string
+      - $ref: '#/definitions/EffectiveDates'
   Organization:
     allOf:
       - $ref: '#/definitions/Party'
@@ -760,12 +1021,31 @@ definitions:
             type: array
             items:
               $ref: '#/definitions/OrganizationName'
-      - $ref: >-
-          http://api.swindle.net/archetypes/v1/schemas/date/effective-dates.schema.json
+      - $ref: '#/definitions/EffectiveDates'
+      - title: Organization
+  OrganizationUnit:
+    allOf:
+      - $ref: '#/definitions/Organization'
+      - description: An Organization that is part of another Organization.
+      - title: OrganizationUnit
+  Company:
+    allOf:
+      - $ref: '#/definitions/Organization'
+      - description: >-
+          Represents an Organization created to make money by selling goods or
+          services, with a legal identity that is separate from its owners.
+      - title: Company
+  CompanyGroup:
+    allOf:
+      - $ref: '#/definitions/Company'
+      - description: >-
+          An Organization comprising a collection of Companies that have a legal
+          relationship.
+      - title: CompanyGroup
   ErrorResponse:
     allOf:
       - $ref: >-
-          http://api.swindle.net/archetypes/v1/schemas/logging-event/error-response.schema.json
+          http://api.swindle.net/archetypes/v1/schemas/log/error-response.schema.json
       - description: >-
           ErrorResponse captures all 4xx class of status codes, for cases in
           which the client seems to have erred. Except when responding to a HEAD

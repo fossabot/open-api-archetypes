@@ -286,7 +286,7 @@ After reviewing the guidelines for [contributing to `open-api-archetypes`][contr
 
 ### 7.2. Third-party dependencies' licenses
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Fopen-api-archetypes.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Fopen-api-archetypes?ref=badge_large)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Farchetype-party.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Farchetype-party?ref=badge_large)
 
 ---
 [![Greenkeeper badge][greenkeeper-image]][greenkeeper-url] [![Readme Score][readme-score-img]][readme-score-url]
@@ -305,8 +305,8 @@ After reviewing the guidelines for [contributing to `open-api-archetypes`][contr
 [daviddm-dev-url]: https://david-dm.org/gregswindle/open-api-archetypes?type=dev
 [daviddm-image]: https://david-dm.org/gregswindle/open-api-archetypes.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/gregswindle/open-api-archetypes
-[fossa-image]: https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Fopen-api-archetypes.svg?type=shield
-[fossa-url]: https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Fopen-api-archetypes?ref=badge_shield
+[fossa-image]: https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Farchetype-party.svg?type=shield
+[fossa-url]: https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Farchetype-party?ref=badge_shield
 [greenkeeper-image]: https://badges.greenkeeper.io/gregswindle/open-api-archetypes.svg
 [greenkeeper-url]: https://greenkeeper.io/
 [issues-url]: https://github.com/gregswindle/open-api-archetypes/issues

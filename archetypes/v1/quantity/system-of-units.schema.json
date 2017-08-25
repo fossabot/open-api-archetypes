@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title" : "SystemOfUnits",
-    "description" : "Represents a set of related Units defined by a standard such as SI."
+    "description" : "Represents a set of related Units defined by a standard such as SI.",
     "definitions": {},
     "id": "http://api.swindle.net/archetypes/v1/schemas/quantity/system-of-units.schema.json",
     "maxProperties": 2,
